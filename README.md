@@ -1,3 +1,5 @@
+# Binocular Breakout
+
 ## What Is This?
 
 Dichoptic therapy presents different visual information to each eye to encourage binocular cooperation and reduce suppression.
@@ -24,6 +26,7 @@ This game is designed to be played with **red/blue anaglyph glasses**, allowing 
 Using red/blue anaglyph glasses, each eye perceives different color channels.
 
 By adjusting colors and contrast:
+
 - The weaker eye can be emphasized
 - The dominant eye can be de-emphasized
 - Successful play requires binocular cooperation
