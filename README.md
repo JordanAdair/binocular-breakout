@@ -1,52 +1,73 @@
-# Binocular Breakout
+# React + TypeScript + Vite
 
-## What Is This?
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Dichoptic therapy presents different visual information to each eye to encourage binocular cooperation and reduce suppression.
+Currently, two official plugins are available:
 
-This game is designed to be played with **red/blue anaglyph glasses**, allowing critical gameplay elements (paddle, ball, bricks) to be tuned so that both eyes are required to play successfully.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-> ⚠️ This project is **not a medical device** and makes no clinical claims.
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Features
+## Expanding the ESLint configuration
 
-- Browser-based — no installation required
-- Classic Breakout-style gameplay
-- Live color customization for paddle and ball
-- Adjustable game scale to change visual difficulty
-- Settings persist automatically using Local Storage
-- Built with a clean separation between game logic and rendering
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
----
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## How Dichoptic Rendering Works
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-Using red/blue anaglyph glasses, each eye perceives different color channels.
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-By adjusting colors and contrast:
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-- The weaker eye can be emphasized
-- The dominant eye can be de-emphasized
-- Successful play requires binocular cooperation
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-All rendering uses solid colors with no gradients to avoid channel leakage.
-
----
-
-## Tech Stack
-
-- React (UI only)
-- TypeScript
-- HTML5 Canvas (game loop & rendering)
-- Vite
-- Local Storage for settings persistence
-  
----
-
-## Disclaimer
-
-This project is for personal and experimental use only. It is not intended to diagnose, treat, or cure any medical condition.
-
----
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
