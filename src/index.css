@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.app h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.game-canvas {
+    border: 3px solid #333;
+    border-radius: 4px;
+    cursor: none;
+    display: block;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: 'Courier New', monospace;
+    background: #FF9800;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-secondary {
+    background: #2196F3;
+}
+
+.instructions {
+    text-align: center;
+    max-width: 600px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.instructions h3 {
+    margin: 0 0 10px 0;
+}
+
+.instructions p {
+    margin: 5px 0;
+}
+
+.instructions .note {
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.7;
+}
